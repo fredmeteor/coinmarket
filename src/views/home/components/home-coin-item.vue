@@ -1,0 +1,1 @@
+home-coin-item.vue

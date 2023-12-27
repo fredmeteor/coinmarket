@@ -16,14 +16,14 @@
           </div>
           <div class="column">
             <div class="ui segment banner">
-              BTC Dominance: {{totalBTCPercentage}} %
+              BTC Dominance: {{formatNumber(totalBTCPercentage)}} %
             </div>
           </div>
         </div>
       </div>
 
       <div class="sixteen wide column">
-        <!-- Header -->
+        <!-- Header Desktop -->
         <div class="ui segment header desktop">
           <div class="ui grid">
             <div class="one wide column">#</div>
@@ -37,8 +37,18 @@
           </div>
         </div>
 
+        <!-- Header Mobile/Tablet -->
+        <div class="ui segment header non-desktop">
+          <div class="ui grid">
+            <div class="two wide column">#</div>
+            <div class="five wide column">Name</div>
+            <div class="five wide column">Price</div>
+            <div class="three wide column">% 1h</div>
+          </div>
+        </div>
+
         <!-- HomeCoinItem -->
-        <home-coin-item v-for="coin in coins" :key="coin.id" :coin="coin" :coinQuotes="coin.quotes.USD"/>
+        <home-coin-item v-for="coin in coins" :key="coin.id" :coin="coin" :coinQuote="coin.quote.USD"/>
       </div>
 
     </div>
@@ -54,6 +64,7 @@ export default {
   name: 'HomePage',
   created() {
     this.formatCurrency = utils.formatCurrency;
+    this.formatNumber = utils.formatNumber;
   },
   computed: {
     ...mapGetters([
